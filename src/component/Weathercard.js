@@ -32,7 +32,7 @@ class Weathercard extends Component {
      
     axios
       .get(
-        `http://api.openweathermap.org/data/2.5/weather?q=${this.props.searchCity}&apikey=${WeatherKey}&units=metric`
+        `https://api.openweathermap.org/data/2.5/weather?q=${this.props.searchCity}&apikey=${WeatherKey}&units=metric`
       )
       .then(res => {
         this.setState({
@@ -50,7 +50,7 @@ class Weathercard extends Component {
   componentDidMount() {
     axios
       .get(
-        `http://api.openweathermap.org/data/2.5/weather?q=${this.state.searchCity}&apikey=${WeatherKey}&units=metric`
+        `https://api.openweathermap.org/data/2.5/weather?q=${this.state.searchCity}&apikey=${WeatherKey}&units=metric`
       )
       .then(res => {
         this.setState({
