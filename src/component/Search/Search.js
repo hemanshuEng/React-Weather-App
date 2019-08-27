@@ -1,4 +1,6 @@
 import React, { Component } from 'react'
+import './Search.css'
+import search from '../../asset/search.svg'
 
 export default class Search extends Component {
     constructor(props){
@@ -23,8 +25,9 @@ export default class Search extends Component {
                     name="city" 
                     type="text" 
                     value={this.state.city}
-                    onChange={this.handleChange}/>
-                    <button type="submit" name="submit">submit</button>
+                    onChange={this.handleChange}
+                    className="SearchBar"/>
+                    <button type="submit" name="submit" className="search-btn"><img src={search} alt="search" className="icon-search" /></button>
                 </form>
             </div>
         )

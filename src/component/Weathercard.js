@@ -9,7 +9,7 @@ import rain from "../asset/rain.svg";
 import thunderstrom from "../asset/thunderstrom.svg";
 
 import "./Weathercard.css";
-
+const WeatherKey = '055c2ca081f6df18e0ca8567fc7d733a';
 class Weathercard extends Component {
   constructor(props) {
     super(props);
@@ -22,15 +22,16 @@ class Weathercard extends Component {
       range: "",
       searchCity:"London"
     };
+    
   }
+
   componentDidUpdate(prevProps){
     if(prevProps.searchCity !==this.props.searchCity)
     {
-      this.setState({searchCity: this.props.searchCity})
-    }
+     
     axios
       .get(
-        `http://api.openweathermap.org/data/2.5/weather?q=${this.state.searchCity}&apikey=b1189dca632043d7d274433375cce13f&units=metric`
+        `http://api.openweathermap.org/data/2.5/weather?q=${this.props.searchCity}&apikey=${WeatherKey}&units=metric`
       )
       .then(res => {
         this.setState({
@@ -43,11 +44,12 @@ class Weathercard extends Component {
         });
       })
       .catch(err => console.log(err));
+    }
   }
   componentDidMount() {
     axios
       .get(
-        `http://api.openweathermap.org/data/2.5/weather?q=${this.state.searchCity}&apikey=b1189dca632043d7d274433375cce13f&units=metric`
+        `http://api.openweathermap.org/data/2.5/weather?q=${this.state.searchCity}&apikey=${WeatherKey}&units=metric`
       )
       .then(res => {
         this.setState({

@@ -1,0 +1,27 @@
+.SearchBar{
+    background: transparent;
+    border:none;
+    padding:2px;
+    font-size:30px;
+    font-weight: bold;
+    width: 250px;
+    color: white;
+    border-bottom: 3px solid white;
+}
+input:focus{
+    outline: none;
+}
+.icon-search{
+display: block;
+width:20px;
+
+}
+
+.search-btn{
+    background: transparent;
+    border:none;
+    cursor: pointer;
+}
+.search-btn:focus{
+    outline:none;
+}
