@@ -19,13 +19,35 @@ class Weathercard extends Component {
       pressure: "",
       humidity: "",
       speed: "",
-      range: ""
+      range: "",
+      searchCity:"London"
     };
+  }
+  componentDidUpdate(prevProps){
+    if(prevProps.searchCity !==this.props.searchCity)
+    {
+      this.setState({searchCity: this.props.searchCity})
+    }
+    axios
+      .get(
+        `http://api.openweathermap.org/data/2.5/weather?q=${this.state.searchCity}&apikey=b1189dca632043d7d274433375cce13f&units=metric`
+      )
+      .then(res => {
+        this.setState({
+          city: res.data.name,
+          temp: res.data.main.temp.toFixed(),
+          pressure: res.data.main.pressure,
+          humidity: res.data.main.humidity,
+          speed: res.data.wind.speed,
+          range: res.data.weather[0].id
+        });
+      })
+      .catch(err => console.log(err));
   }
   componentDidMount() {
     axios
       .get(
-        "http://api.openweathermap.org/data/2.5/weather?q=delhi&apikey=b1189dca632043d7d274433375cce13f&units=metric"
+        `http://api.openweathermap.org/data/2.5/weather?q=${this.state.searchCity}&apikey=b1189dca632043d7d274433375cce13f&units=metric`
       )
       .then(res => {
         this.setState({
