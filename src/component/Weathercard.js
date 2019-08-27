@@ -9,7 +9,8 @@ import rain from "../asset/rain.svg";
 import thunderstrom from "../asset/thunderstrom.svg";
 
 import "./Weathercard.css";
-const WeatherKey = '055c2ca081f6df18e0ca8567fc7d733a';
+const WeatherKey = process.env.REACT_APP_WEATHER_API_KEY;
+console.log(WeatherKey);
 class Weathercard extends Component {
   constructor(props) {
     super(props);
